@@ -48,6 +48,7 @@
       if (el._baseCss === undefined) el._baseCss = el.getAttribute("style") || "";
       el.setAttribute("style", el._baseCss);
       if (window.innerWidth <= MOBILE) Object.assign(el.style, styles);
+      if (el._revealed) { el.style.opacity = "1"; el.style.transform = "translateX(0)"; }
     });
   }
 
@@ -137,6 +138,37 @@
     }
     form.reset();
   });
+
+  /* ---- scroll reveal: B card slides in from the left, A card from the right ---- */
+  (function () {
+    var els = qa(".reveal_left, .reveal_right");
+    if (!els.length) return;
+    els.forEach(function (el, idx) {
+      if (el._baseCss === undefined) el._baseCss = el.getAttribute("style") || "";
+      var small = el.classList.contains("card_why") || el.classList.contains("card_price") || el.classList.contains("form_wrap");
+      var dist = small ? "48px" : "56px";
+      el.style.opacity = "0";
+      el.style.transform = "translateX(" + (el.classList.contains("reveal_left") ? "-" + dist : dist) + ")";
+      var d = small ? ((idx % 4) * 0.12).toFixed(2) : "0";
+      el.style.willChange = "opacity, transform";
+      el.style.transition = "opacity 1.25s cubic-bezier(.2,.7,.2,1) " + d + "s, transform 1.25s cubic-bezier(.2,.7,.2,1) " + d + "s";
+      el._baseCss = el.getAttribute("style");
+    });
+    if (!window.IntersectionObserver) {
+      els.forEach(function (el) { el.style.opacity = "1"; el.style.transform = "none"; });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries, obs) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        en.target.style.opacity = "1";
+        en.target.style.transform = "translateX(0)";
+        en.target._revealed = true;
+        obs.unobserve(en.target);
+      });
+    }, { threshold: 0.2, rootMargin: "0px 0px -8% 0px" });
+    els.forEach(function (el) { io.observe(el); });
+  })();
 
   window.addEventListener("scroll", onScroll, { passive: true });
   window.addEventListener("resize", onResize, { passive: true });
