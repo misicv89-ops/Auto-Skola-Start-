@@ -1,0 +1,51 @@
+:root{
+  --black:#0E0F10;
+  --black-soft:#191B1D;
+  --red:#D81E26;
+  --red-dark:#A3151C;
+  --yellow:#FFCB05;
+  --white:#FAFAF8;
+  --grey:#ECECE8;
+  --grey-2:#C9C9C3;
+  --accent:#D81E26;
+  --font-display:"Barlow Condensed", Impact, sans-serif;
+  --font-body:"Barlow", Helvetica, Arial, sans-serif;
+  --font-mono:"IBM Plex Mono", monospace;
+  --stripe:repeating-linear-gradient(135deg, #DEDED8 0 10px, #E9E9E4 10px 20px);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--white);color:var(--black);font-family:var(--font-body);-webkit-font-smoothing:antialiased;width:100%;overflow-x:clip}
+a{color:var(--red);text-decoration:none}
+a:hover{color:var(--red-dark)}
+img{max-width:100%;display:block}
+button{font-family:inherit}
+@keyframes wheelSway{0%{transform:rotate(-7deg)}50%{transform:rotate(7deg)}100%{transform:rotate(-7deg)}}
+@keyframes blink{0%,45%{opacity:1}55%,100%{opacity:.18}}
+@media (prefers-reduced-motion: reduce){*{animation-duration:.01ms !important;animation-iteration-count:1 !important}}
+
+/* hover & focus states generated from the design */
+.ix-1:hover{background-size:100% 2px !important;color:var(--white) !important}
+.ix-2:hover{background-size:100% 2px !important;color:var(--white) !important}
+.ix-3:hover{background-size:100% 2px !important;color:var(--white) !important}
+.ix-4:hover{background-size:100% 2px !important;color:var(--white) !important}
+.ix-5:hover{background-size:100% 2px !important;color:var(--white) !important}
+.ix-6:hover{background-size:100% 100% !important;color:var(--white) !important}
+.ix-7:hover{background:var(--white) !important;color:var(--black) !important;transform:translateY(-2px) !important}
+.ix-8:hover{background-size:100% 100% !important;color:var(--black) !important;border-color:var(--yellow) !important}
+.ix-9:hover{background-size:100% 100% !important}
+.ix-10:hover{background-size:100% 100% !important}
+.ix-11:hover{background-size:100% 100% !important;color:var(--white) !important;border-color:var(--red) !important}
+.ix-12:hover{background:var(--white) !important;color:var(--red) !important}
+.ix-13:hover{background:var(--white) !important;color:var(--red) !important}
+.ix-14:hover{color:var(--red) !important}
+.ix-15:focus{border-color:var(--red) !important}
+.ix-16:focus{border-color:var(--red) !important}
+.ix-17:focus{border-color:var(--red) !important}
+.ix-18:hover{background:var(--white) !important;color:var(--black) !important}
+.ix-19:hover{color:var(--white) !important}
+.ix-20:hover{color:var(--white) !important}
+.ix-21:hover{color:var(--white) !important}
+.ix-22:hover{color:var(--white) !important}
+.ix-23:hover{color:var(--white) !important}
+.ix-24:hover{color:var(--white) !important}
